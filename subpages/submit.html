@@ -1,46 +1,6 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="/jemdoc.css" type="text/css">
-<head>
-    <script>
-        // Function to update countdown
-        function updateCountdown(elementId, targetDate) {
-            // Get the element to update
-            var countdownElement = document.getElementById(elementId);
-    
-            // Set the target date and time
-            var countDownDate = new Date(targetDate).getTime();
-    
-            // Update the countdown every second
-            var countdownInterval = setInterval(function() {
-                // Get the current date and time
-                var now = new Date().getTime();
-    
-                // Find the distance between now and the target date
-                var distance = countDownDate - now;
-    
-                // Calculate days, hours, minutes, and seconds
-                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-                // Display the countdown
-                countdownElement.textContent = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-    
-                // If the countdown is finished, clear the interval
-                if (distance < 0) {
-                    clearInterval(countdownInterval);
-                    countdownElement.textContent = "Expired";
-                }
-            }, 1000);
-        }
-    
-        // Call the updateCountdown function for each row
-        updateCountdown("countdown1", "Apr 18 2024 19:59:00 GMT+0800"); // Set the target date for the first row
-        updateCountdown("countdown2", "May 23 2024 04:00:00 GMT+0800"); // Set the target date for the second row
-    </script>
-</head>
 
 <title>Info</title>
 
@@ -94,6 +54,45 @@
         </tbody>
     </table>
 
+
+    <script>
+        // Function to update countdown
+        function updateCountdown(elementId, targetDate) {
+            // Get the element to update
+            var countdownElement = document.getElementById(elementId);
+    
+            // Set the target date and time
+            var countDownDate = new Date(targetDate).getTime();
+    
+            // Update the countdown every second
+            var countdownInterval = setInterval(function() {
+                // Get the current date and time
+                var now = new Date().getTime();
+    
+                // Find the distance between now and the target date
+                var distance = countDownDate - now;
+    
+                // Calculate days, hours, minutes, and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+                // Display the countdown
+                countdownElement.textContent = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+    
+                // If the countdown is finished, clear the interval
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    countdownElement.textContent = "Expired";
+                }
+            }, 1000);
+        }
+    
+        // Call the updateCountdown function for each row
+        updateCountdown("countdown1", "Apr 18 2024 19:59:00 GMT+0800"); // Set the target date for the first row
+        updateCountdown("countdown2", "May 23 2024 04:00:00 GMT+0800"); // Set the target date for the second row
+    </script>
 
 </body>
 <div style="display: block; opacity: 1;"></div>
