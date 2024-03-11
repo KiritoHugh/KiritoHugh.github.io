@@ -4,6 +4,46 @@
 <title>Info</title>
 
 <body>
+
+    <script>
+        // Function to update countdown
+        function updateCountdown(elementId, targetDate) {
+            // Get the element to update
+            var countdownElement = document.getElementById(elementId);
+    
+            // Set the target date and time
+            var countDownDate = new Date(targetDate).getTime();
+    
+            // Update the countdown every second
+            var countdownInterval = setInterval(function() {
+                // Get the current date and time
+                var now = new Date().getTime();
+    
+                // Find the distance between now and the target date
+                var distance = countDownDate - now;
+    
+                // Calculate days, hours, minutes, and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+                // Display the countdown
+                countdownElement.textContent = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+    
+                // If the countdown is finished, clear the interval
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    countdownElement.textContent = "Expired";
+                }
+            }, 1000);
+        }
+    
+        // Call the updateCountdown function for each row
+        updateCountdown("countdown1", "Apr 18 2024 19:59:00 GMT+0800"); // Set the target date for the first row
+        updateCountdown("countdown2", "May 23 2024 04:00:00 GMT+0800"); // Set the target date for the second row
+    </script>
+
     <table summary="Table for page layout." id="tlayout">
         <tbody>
             <tr valign="top">
@@ -25,13 +65,16 @@
                     <table class="awards">
                         <tbody>
                             <tr>
+                                <th>Countdown</th>
                                 <th>Conference</th>
                                 <th>Submission Date</th>
                                 <!-- <th>Acceptance Date</th> -->
                                 <th>Pages</th>
                                 <th>Location</th>
                             </tr>
+                                <!-- use js to implement count down -->
                             <tr>
+                                <td><span id="countdown1">???</span></td>
                                 <td>SIGMOD 2025</td>
                                 <td>Apr 18th 2024 19:59:00 HKT</td>
                                 <!-- <td>May 1, 2021</td> -->
@@ -39,6 +82,7 @@
                                 <td>Berlin, Germany</td>
                             </tr>
                             <tr>
+                                <td><span id="countdown2">???</span></td>
                                 <td>NeurIPS 2024</td>
                                 <td>May 23rd 2024 04:00:00 HKT</td>
                                 <!-- <td>Aug 1, 2021</td> -->
@@ -46,8 +90,6 @@
                                 <td>Vancouver, Canada</td>
                             </tr>
                         </tbody>
-                
-
 
                 </td>
             </tr>
